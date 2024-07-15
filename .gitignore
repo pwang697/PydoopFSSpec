@@ -3,4 +3,3 @@ dist/*
 pydoopfsspec/__pycache__
 pydoopfsspec.egg-info/*
 test*
-*.txt
