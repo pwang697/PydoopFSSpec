@@ -1,0 +1,19 @@
+{
+    "name": "HDFS and Python Dev Container",
+    "dockerComposeFile": ["./docker-compose.yml"],
+    "service": "python",
+    "workspaceFolder": "/workspace",
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "terminal.integrated.shell.linux": "/bin/bash",
+          "extensions": [
+            "ms-python.python",
+            "ms-azuretools.vscode-docker"
+          ]
+        }
+      }
+    },
+    "remoteUser": "root"
+  }
+  

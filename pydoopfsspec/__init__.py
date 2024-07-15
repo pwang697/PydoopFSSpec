@@ -1,0 +1,1 @@
+from .pydoop import HadoopFileSystem

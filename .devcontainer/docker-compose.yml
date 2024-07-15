@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  hdfs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hdfs
+    hostname: hdfs
+    environment:
+      - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+      - HADOOP_HOME=/opt/hadoop
+      - HDFS_NAMENODE_USER=root
+      - HDFS_DATANODE_USER=root
+      - HDFS_SECONDARYNAMENODE_USER=root
+    volumes:
+      - namenode-data:/opt/hadoop/data/namenode
+      - datanode-data:/opt/hadoop/data/datanode
+    ports:
+      - "9870:9870"
+      - "8020:8020"
+
+  python:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: python-env
+    hostname: python-env
+    volumes:
+      - ..:/workspace
+    working_dir: /workspace
+    command: [ "sleep", "infinity" ]
+    depends_on:
+      - hdfs
+
+volumes:
+  namenode-data:
+  datanode-data:
